@@ -7,14 +7,81 @@ body {
     padding: 0;
 }
 
+#tdk-toolbar { display: none!important; }
+
+// -----------------------------
+// #Page Settings
+// -----------------------------
+
 .wrapper {
     width: 90%;
     margin: 0 5%;
 }
 
-/* ===============================
-   CUSTOM CSS
-   =============================== */
+
+// Mixins
+// ----------
+
+.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius:    @radius;
+    border-radius:         @radius;
+
+    -moz-background-clip:    padding;
+    -webkit-background-clip: padding-box;
+    background-clip:         padding-box;
+}
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+    -webkit-border-top-right-radius:    @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius:  @bottomleft;
+    -webkit-border-top-left-radius:     @topleft;
+
+    -moz-border-radius-topright:        @topright;
+    -moz-border-radius-bottomright:     @bottomright;
+    -moz-border-radius-bottomleft:      @bottomleft;
+    -moz-border-radius-topleft:         @topleft;
+
+    border-top-right-radius:            @topright;
+    border-bottom-right-radius:         @bottomright;
+    border-bottom-left-radius:          @bottomleft;
+    border-top-left-radius:             @topleft;
+
+    -moz-background-clip:    padding;
+    -webkit-background-clip: padding-box;
+    background-clip:         padding-box;
+}
+.flex-space-between {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+
+// -----------------------------
+// #Custom CSS
+// -----------------------------
 
 .canvas {
     background-color: @color-swatch1;
@@ -23,9 +90,7 @@ body {
     margin: 40px auto;
     padding: 0px;
     box-shadow: 0 0 100px rgba(197,197,197,0.1);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+    .border-radius(6px);
 }
 
 .main {
@@ -46,97 +111,217 @@ body.edit .widget.navigation, body.edit .widget.extendednavigation {
 
 .page-title {
     padding: 0.4em 0;
-    background-color: lighten(@color-swatch5,25%);
+    background-color: darken(@color-swatch1,6%);
 }
 
 .page-title h4 {
     padding-bottom: 0;
-    color: @color-swatch1;
+    color: @color-swatch5;
 }
 
 .main.wrapper .widget {
     .clearfix;
 }
 
-/* ===============================
-   HEADER
-   =============================== */
 
-header.bk-header {
+
+
+// -----------------------------
+// #Header
+// -----------------------------
+
+.header-content,
+.footer-content {
+    .flex-space-between;
     padding: 20px 0;
-    background-color: @color-swatch7;
-}
 
-.companyheader {
-    display: block;
-    float: left;
-    margin-top: 8px;
-    width: 25%;
     @media @tablet {
-        width: 75%;
+        display: block;
     }
 }
 
-/* LOGO */
 
-.widget.logo {
-/*    display: block;
-    float: left;*/
-    margin-right: 8px;
-    margin-top: 3px;
+// Top Section
+// -----------
+
+.top-section {
+    background-color: darken(@color-swatch4, 10%);
+    .border-radiuses(5px, 0, 0, 5px);
+
+    @media @mobile {
+        padding: 10px 0 7px;
+    }
+}
+.top-section-content {
+    .flex-space-between;
+
+    @media @mobile {
+        display: block;
+    }
 }
 
-.widget {
-    &.logo, &.companyname {
+
+// Top Section: Profile Widgets
+// ----------------------------
+
+.widget.profile {
+    span, a, p {
+        color: lighten(@color-swatch4, 25%)!important;
+        font-size: 13px;
+    }
+}
+
+.bk-profile-address {
+    @media @mobile {
+        line-height: 20px;
+    }
+    p {
         display: inline-block;
         vertical-align: middle;
+        padding: 0;
+        font-size: 13px;
+
+        @media @mobile {
+            line-height: 20px;
+        }
     }
 }
 
-/* ===============================
-   FOOTER
-   =============================== */
 
-footer.bk-footer {
-    border-top: 1px solid lighten(@color-swatch5,20%);
-    padding: 1.8em 0 1.2em;
-    color: @color-swatch1;
+
+
+// -----------------------------
+// #Footer
+// -----------------------------
+
+.bk-footer {
+    border-top: 1px solid darken(@color-swatch7,8%);
 }
 
-footer.bk-footer h1,
-footer.bk-footer h2,
-footer.bk-footer h3,
-footer.bk-footer h4 {
-    padding-bottom: 30px;
+
+
+
+// -----------------------------
+// #Feature
+// -----------------------------
+
+.widget.feature {
+    overflow: inherit;
+    background-color: @color-swatch1;
+    .feature-bgimg {
+        height: 400px;
+
+        @media @tablet {
+            height: 300px;
+        }
+        @media @mobile {
+            height: 240px;
+        }
+    }
+    // Content
+    .feature-bgimg .content {
+        height: auto;
+        min-height: inherit;
+        position: absolute;
+        bottom: 0;
+        z-index: 9999;
+        width: 100%;
+        background-color: hsla(hue(@color-swatch4), saturation(@color-swatch4), lightness(darken(@color-swatch4,20%)), 0.6);
+        button {
+            margin: 0;
+        }
+    }
+    .feature-bgimg,
+    .feature-bgimg .content {
+        display: block;
+    }
+    // Spare
+    .feature-bgimg .content .spare {
+        padding: 20px 0;
+    }
+    // Typography
+    h2, h3 {
+        padding: 0;
+        max-width: 80%;
+    }
 }
 
-footer.bk-footer .columns-two-right {
-    text-align: right;
+// Feature Button
+.feature-btn {
+    position: absolute;
+    top: 35px;
+    right: 5%;
+
+    @media @mobile {
+        top: 30px;
+    }
 }
+
+
+
+
+// -----------------------------
+// Buttons
+// -----------------------------
+
+// Overrides
+.widget.button button {
+    margin: 10px 0;
+}
+
+// General
+.widget.button button,
+button.btn,
+.widget.profile form button,
+.signupform fieldset button,
+.contactform button.btn,
+.btn,
+.widget.dropbox button,
+.blogsearch form button,
+.checkout-order-button,
+.checkout-empty-link,
+.widget.tweet a,
+.widget.button.paypal,
+.blog-post-more-link a,
+.widget.ecombasket .ecombasket-pull,
+.ecombasket-checkout-link,
+.widget.ecomcheckout .checkout-order-button,
+.blog-list-footer a,
+.widget.feature .feature-bgimg .content button {
+    padding: 10px 24px;
+    margin: 0;
+    border: 1px solid darken(@color-swatch3,3%);
+
+    background-color: @font-swatch7-background-color;
+    color: @font-swatch7-color;
+    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
+
+    .border-radius(3px);
+    text-decoration: none;
+    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
+
+    &:hover {
+        background-color: @font-swatch7-background-color-hover;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+// Tweet
+.widget.tweet a {
+    padding: 14px 10px 14px 40px;
+}
+.widget.dropbox button {
+    padding: 10px 10px 10px 40px;
+}
+
 
 /* ===============================
    EXTENDED NAVIGATION
    =============================== */
 
-
-.widget.extendednavigation {
-    float: right;
-    position: relative;
-    width: 75%;
-    margin: 0;
-    padding: 5px 0;
-}
-
-.widget.extendednavigation ul {
-    margin: 0;
-    padding: 0;
-}
-
-.widget.extendednavigation ul li {
-    float: left;
-    display: block;
-
-}
 
 .widget.extendednavigation ul li.selected {
     span.text {
@@ -181,9 +366,6 @@ footer.bk-footer .columns-two-right {
     margin-right: 0px;
     &:after {
         border: 0;
-    }
-    @media @tablet {
-        margin-right: 10px;
     }
 }
 
@@ -270,306 +452,8 @@ footer.bk-footer .columns-two-right {
     *zoom: 1
 }
 
-/* ===============================
-   FEATURE
-   =============================== */
-
-.widget.feature {
-    width: 100.04%;
-}
-
-.widget.feature .feature-bgimg {
-    height: 450px;
-    background-color: lighten(@color-swatch2,4%);
-}
 
 
-.widget.feature .content {
-    height: 450px;
-    text-align: left;
-}
-
-/* FEATURE TITLE */
-
-.widget.feature h2 {
-    font-family: @font-swatch8-font-family;
-    font-size: @font-swatch8-font-size;
-    font-weight: @font-swatch8-font-weight;
-    line-height: @font-swatch8-line-height;
-    color: @font-swatch8-color;
-    letter-spacing: @font-swatch8-letter-spacing;
-}
-
-/* FEATURE STRAPLINE */
-
-.widget.feature h3 {
-    font-family: @font-swatch9-font-family;
-    font-size: @font-swatch9-font-size;
-    font-weight: @font-swatch9-font-weight;
-    line-height: @font-swatch9-line-height;
-    color: @font-swatch9-color;
-    letter-spacing: @font-swatch9-letter-spacing;
-    max-width: 600px;
-}
-
-/* FEATURE BUTTON */
-
-.widget.feature button {
-    font-family: @font-swatch7-font-family;
-    font-size: 0.9em;
-    font-weight: @font-swatch7-font-weight;
-    line-height: @font-swatch7-line-height;
-    color: @font-swatch7-color;
-    letter-spacing: @font-swatch7-letter-spacing;
-    background-color: @font-swatch7-background-color;
-    padding: 10px 24px;
-    margin: 1em 0 0;
-    border: none;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
-    text-decoration: none;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-}
-
-.widget.feature button:hover {
-    background-color: @font-swatch7-background-color-hover;
-    cursor: pointer;
-}
-
-.widget.feature button.btn.justifyleft {
-    text-align: left
-}
-
-.widget.feature button.btn.justifycenter {
-    text-align: center
-}
-
-.widget.feature button.btn.justifyright {
-    text-align: right
-}
-
-.widget.feature button.btn.justifyfull {
-    text-align: justify
-}
-
-.widget.feature button.btn.italic {
-    font-style: italic
-}
-
-.widget.feature button.btn.bold {
-    font-weight: bold
-}
-
-.widget.feature button span {
-    vertical-align: center
-}
-
-.widget.feature button i {
-    margin-right: 5px
-}
-
-/* ===============================
-   FEATURE LAYOUTS
-   =============================== */
-
-/* LEFT ALIGN */
-
-.widget.feature.align-left .content {
-    width: 100%;
-    text-align: left;
-}
-
-/* CENTER ALIGN */
-
-.widget.feature.align-center .content {
-    width: 100%;
-    text-align: center;
-}
-
-/* RIGHT ALIGN */
-
-.widget.feature.align-right .content {
-    width: 100%;
-    text-align: right;
-}
-
-/* ===============================
-   CONTENT
-   =============================== */
-
-.widget.content {
-    padding: 0;
-    overflow: hidden;
-}
-
-.widget.content span.expand {
-    font-family: @font-swatch3-font-family;
-    background-color: @color-swatch3;
-    color: @font-swatch7-color;
-    font-size: @font-swatch5-font-size;
-    padding: 4px 8px;
-    margin: 4px 0;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.widget.content span.expand:hover,
-.widget.content span.expand:focus {
-    cursor: pointer;
-    background-color: darken(@color-swatch3,5%);
-}
-
-/* ===============================
-   IMAGE WIDGET
-   =============================== */
-
-.widget.image img {
-    display: block;
-    max-width: 100%;
-    border: 0;
-    border-width: 0;
-}
-
-.widget.image {
-
-}
-
-.widget.image span.image-title {
-    display: block;
-    margin: 5px;
-    font-family: @font-swatch4-font-family;
-    font-weight: @font-swatch4-font-weight;
-    font-size: @font-swatch4-font-size;
-    text-align: center;
-    line-height: @font-swatch4-line-height;
-}
-
-.widget.image span.image-description {
-    display: block;
-    margin: 5px;
-    text-align: center;
-    font-family: @font-swatch5-font-family;
-    font-weight: @font-swatch5-font-weight;
-    font-size: @font-swatch5-font-size;
-    line-height: @font-swatch5-line-height;
-}
-
-/* ===============================
-   PAYPAL BUTTON
-   =============================== */
-
-
-.widget.paypalbuynow .widget.button.paypal {
-    border: 1px solid darken(@color-swatch3,3%);
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-decoration: none;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-}
-
-/* ===============================
-   DROPBOX BUTTON
-   =============================== */
-
-
-
-.widget.dropbox .b-wrap .btn {
-    border: 1px solid darken(@color-swatch3,3%);
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.widget.dropbox .b-wrap .btn:hover {
-  background-color: @font-swatch7-background-color-hover;
-}
-
-.widget.dropbox .b-wrap .file-name {
-  font-family: @font-swatch5-font-family;
-  font-size: @font-swatch5-font-size;
-  font-weight: @font-swatch5-font-weight;
-  line-height: @font-swatch5-line-height;
-  color: @font-swatch5-color;
-  letter-spacing: @font-swatch5-letter-spacing;
-    padding-left: 5px;
-
-}
-
-
-/* ===============================
-   BUTTON CSS
-   =============================== */
-
-.widget.button {
-    padding: 4px 0
-}
-
-.widget.button button {
-    padding: 10px 24px;
-    margin: 0;
-    border: 1px solid darken(@color-swatch3,3%);
-
-    font-family: @font-swatch7-font-family;
-    font-size: @font-swatch7-font-size;
-    font-weight: @font-swatch7-font-weight;
-    background-color: @font-swatch7-background-color;
-    letter-spacing: @font-swatch7-letter-spacing;
-    color: @font-swatch7-color;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-decoration: none;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-}
-
-.widget.button button:hover {
-    background-color: @font-swatch7-background-color-hover;
-    cursor: pointer;
-}
-
-/* JUSTIFY */
-
-.widget.button button.btn.justifyleft {
-    text-align: left
-}
-
-.widget.button button.btn.justifycenter {
-    text-align: center
-}
-
-.widget.button button.btn.justifyright {
-    text-align: right
-}
-
-.widget.button button.btn.justifyfull {
-    text-align: justify
-}
-
-.widget.button button.btn.italic {
-    font-style: italic
-}
-
-.widget.button button.btn.bold {
-    font-weight: bold
-}
-
-.widget.button span {
-    vertical-align: center
-}
-
-.widget.button i {
-    margin-right: 5px
-}
 
 /* ===============================
    LINE WIDGET
@@ -822,72 +706,15 @@ hr.line.align-right {
     text-decoration: underline;
 }
 
-/* ===============================
-   TWEET THIS
-   =============================== */
-
-.widget.tweet {
-    padding: 9px 0
-}
-
-.svg .widget.tweet a {
-    border: 1px solid darken(@color-swatch3,3%);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-    -webkit-font-smoothing: initial;
-}
-
-.widget.tweet a:active {
-    box-shadow: inset 0 2px 3px rgba(0,0,0,0.1)
-}
 
 /* ==================================
    SOCIAL BAR WIDGET / SOCIAL PROFILE
    =============================== */
 
-.widget.socialicons,
-.widget.profile .bk-profile-socialicons {
-    padding: 0px;
-    font-size: 1em;
-    font-family: @font-swatch7-font-family;
-}
-
-.widget.socialicons a,
-.widget.profile .bk-profile-socialicons a {
-    text-decoration: none;
-    text-indent: 9999px;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* FOOTER 2 */
-
-footer.bk-footer .widget.profile .bk-profile-socialicons span a {
-    width: 26px;
-    height: 26px;
-    background-size: 15px;
-    margin-right: 7px;
-}
-
-footer.bk-footer .columns-two-right .widget.profile .bk-profile-socialicons span a {
-    text-align: left;
-    margin-right: 4px;
-}
-
-footer.bk-footer .widget.profile .bk-profile-socialicons {
-    padding: 2px 0;
-}
-.widget.profile .bk-profile-socialicons span {
-    display: inline-block
-}
-
 .widget.socialicons span a,
 .widget.profile .bk-profile-socialicons span a {
     display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 8px;
+    margin: 5px 5px 5px 0;
     background-size: 18px;
     width: 32px;
     height: 32px;
@@ -902,74 +729,11 @@ footer.bk-footer .widget.profile .bk-profile-socialicons {
 }
 
 .widget.socialicons span a:hover,
-.widget.profile 
+.widget.profile
 .bk-profile-socialicons span a:hover {
     background-color: @font-swatch7-background-color-hover
 }
 
-/* SVG ICONS */
-
-.svg .widget.socialicons span.bk-socialicons-twitter a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-twitter a {
-    background-image: image('/images/social/socialicons-twitter.svg');
-}
-
-.svg .widget.socialicons span.bk-socialicons-linkedin a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-linkedin a {
-    background-image: image('/images/social/socialicons-linkedin.svg')
-}
-
-.svg .widget.socialicons span.bk-socialicons-facebook a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-facebook a {
-    background-image: image('/images/social/socialicons-facebook.svg')
-}
-
-.svg .widget.socialicons span.bk-socialicons-rss a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-rss a {
-    background-image: image('/images/social/socialicons-rss.svg')
-}
-
-.svg .widget.socialicons span.bk-socialicons-googleplus a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-googleplus a {
-    background-image: image('/images/social/socialicons-googleplus.svg')
-}
-
-.svg .widget.socialicons span.bk-socialicons-youtube a,
-.svg .widget.profile .bk-profile-socialicons span.bk-socialicons-youtube a {
-    background-image: image('/images/social/socialicons-youtube.svg')
-}
-
-/* PNG ICONS */
-
-.widget.socialicons span.bk-socialicons-twitter a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-twitter a {
-    background-image: image('/images/social/socialicons-twitter.png');
-}
-
-.widget.socialicons span.bk-socialicons-linkedin a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-linkedin a {
-    background-image: image('/images/social/socialicons-linkedin.png')
-}
-
-.widget.socialicons span.bk-socialicons-facebook a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-facebook a {
-    background-image: image('/images/social/socialicons-facebook.png')
-}
-
-.widget.socialicons span.bk-socialicons-rss a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-rss a {
-    background-image: image('/images/social/socialicons-rss.png')
-}
-
-.widget.socialicons span.bk-socialicons-googleplus a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-googleplus a {
-    background-image: image('/images/social/socialicons-googleplus.png')
-}
-
-.widget.socialicons span.bk-socialicons-youtube a,
-.widget.profile .bk-profile-socialicons span.bk-socialicons-youtube a {
-    background-image: image('/images/social/socialicons-youtube.png')
-}
 
 /* ===============================
    PROFILE WIDGET
@@ -1301,8 +1065,7 @@ footer .footer2 .widget.profile form {
 }
 
 .blog-post-more-link {
-    float: left;
-    width: 100%;
+    margin: 10px 0;
 }
 
 /* BLOG SEARCH */
@@ -1381,7 +1144,7 @@ footer .footer2 .widget.profile form {
 
 // Main Menu
 .widget.menu {
-    .main.wrapper {
+    .main.container {
         width: 100%;
         margin: 0 0 2em;
         border-bottom: 1px solid @color-swatch2;
@@ -1460,6 +1223,9 @@ footer .footer2 .widget.profile form {
     letter-spacing: @font-swatch7-letter-spacing;
 }
 
+
+
+
 /* =======================================
    ECOMMERCE
    ==================================== */
@@ -1470,10 +1236,6 @@ footer .footer2 .widget.profile form {
 
    .ecom-product-variation select,
    .widget.ecomcheckout .delivery select {
-
-        -moz-appearance: none;
-        text-indent: 0.01px;
-        text-overflow: '';
         cursor: pointer;
         position: relative;
         background-repeat: no-repeat;
@@ -1497,7 +1259,6 @@ footer .footer2 .widget.profile form {
         letter-spacing: 0;
         float: none;
         height: 41px;
-        background-image: image('/images/ui-select-arrow.png');
 
         @media @mobile {
           display: block;
@@ -1531,10 +1292,6 @@ footer .footer2 .widget.profile form {
             }
           }
           select {
-            -moz-appearance: none;
-            text-indent: 0.01px;
-            -webkit-appearance: none;
-            text-overflow: '';
             cursor: pointer;
             position: relative;
             background-repeat: no-repeat;
@@ -1558,7 +1315,6 @@ footer .footer2 .widget.profile form {
             letter-spacing: 0;
             float: none;
             height: 41px;
-            background-image: image('/images/ui-select-arrow.png');
 
             @media @mobile {
               display: block;
@@ -1600,50 +1356,38 @@ footer .footer2 .widget.profile form {
         margin-bottom: -15px;
 }
 
+/*  Basket Icon  */
 
-
-.svg {
-  .widget.ecomproductslist .ecom-productslist-products .productlist-filter .productlist-display-form .form-group select {
-    background-image: image('/images/ui-select-arrow.svg');
-    background-repeat: no-repeat;
-    background-size: 15px;
-    background-position-x: 93%;
-    background-position-y: 55%;
-  }
+.widget.ecombasket {
+    margin-bottom: 2em;
 }
 
-    /*  Basket Icon  */
+/*  Order Button  */
 
-    .widget.ecombasket {
-        margin-bottom: 2em;
+.widget.ecomcheckout {
+
+    .checkout-order-button {
+        margin: 20px 0 20px 0;
+        font-family: @font-swatch7-font-family;
+        font-weight:@font-swatch7-font-weight;
+        line-height: @font-swatch7-line-height;
+        letter-spacing: @font-swatch7-letter-spacing;
+        background-color: @font-swatch7-background-color;
+        color: @font-swatch7-color;
+        font-size: 1.1em;
+        padding: 10px 16px;
+        margin: 1em 0;
+        border: none;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-decoration: none;
+        text-shadow: 0 1px 0px rgba(0,0,0,0.2);
     }
 
-    /*  Order Button  */
-
-    .widget.ecomcheckout {
-
-        .checkout-order-button {
-            margin: 20px 0 20px 0;
-            font-family: @font-swatch7-font-family;
-            font-weight:@font-swatch7-font-weight;
-            line-height: @font-swatch7-line-height;
-            letter-spacing: @font-swatch7-letter-spacing;
-            background-color: @font-swatch7-background-color;
-            color: @font-swatch7-color;
-            font-size: 1.1em;
-            padding: 10px 16px;
-            margin: 1em 0;
-            border: none;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-            text-decoration: none;
-            text-shadow: 0 1px 0px rgba(0,0,0,0.2);
-        }
-
-        .delivery-price {
-            line-height: 50px;
-        }
+    .delivery-price {
+        line-height: 50px;
+    }
 
 }
 
@@ -1937,10 +1681,9 @@ footer .footer2 .widget.profile form {
 
     .widget.extendednavigation ul li.folder {
         background-image: image('/images/arrow-down.png');
-        float: right;
         background-repeat: no-repeat;
         cursor: pointer;
-        padding-right: 10px;
+        padding-right: 0;
         &:after {
             border: 0;
         }
@@ -1957,24 +1700,15 @@ footer .footer2 .widget.profile form {
     /* NAV */
 
     .widget.extendednavigation a.pull {
-        top: 0;
-        margin-top: 15px;
-    }
-
-    .widget.extendednavigation {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        .clearfix;
-        float: none;
+        margin-top: 17px;
     }
 
     .widget .extendednavigation ul {
         width: 100%;
         display: none;
-        border-top: 1px solid lighten(@color-swatch7,8%);
+        border-top: 1px solid darken(@color-swatch7,8%);
         padding: 20px 0;
-        margin: 14px 0 0;
+        margin: 20px 0 0;
     }
 
     .widget .extendednavigation ul li {
@@ -2010,15 +1744,6 @@ footer .footer2 .widget.profile form {
         padding: 8px 12px;
     }
 
-    .widget.feature .feature-bgimg {
-        height: 350px;
-    }
-
-    .widget.feature .content {
-        height: 350px;
-        padding: 20px 0 40px 0;
-    }
-
     /* GALLERY */
 
     .widget.gallery li span.inner .title, .widget.gallery li span.inner .description {
@@ -2045,7 +1770,7 @@ footer .footer2 .widget.profile form {
     .widget.companyname a {
         font-size: bkscale(@font-swatch10-font-size,0.9);
     }
-    
+
     /* UL ALIGN RIGHT */
 
     .widget.extendednavigation ul.align-right li:hover ul li {
@@ -2073,7 +1798,6 @@ footer .footer2 .widget.profile form {
     .widget.feature h2 {
         font-size: bkscale(@font-swatch8-font-size,0.6);
         line-height: bkscale(@font-swatch8-line-height,0.8);
-        padding-bottom: 6px;
     }
 
     .widget.feature h3 {
@@ -2084,14 +1808,6 @@ footer .footer2 .widget.profile form {
     .widget.feature button {
         font-size: .8em;
         padding: 5px 10px;
-    }
-
-    .widget.feature .feature-bgimg {
-        height: 300px
-    }
-
-    .widget.feature .content {
-        height: 300px
     }
 
      /* GALLERY */
@@ -2106,17 +1822,6 @@ footer .footer2 .widget.profile form {
       padding-bottom: 50%;
     }
 
-    footer .columns-two-right {
-        text-align: left;
-    }
-
-}
-
-@media only screen and (min-width: 1140px) { 
-    .wrapper {
-        max-width: 1140px;
-        margin: 0 auto;
-    }
 }
 
 .clearfix:before,

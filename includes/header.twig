@@ -1,0 +1,17 @@
+<div class="top-section">
+	<div class="wrapper">
+		<div class="top-section-content">
+			{{widget('profile', 'top-section_profile--address', { 'profileType' : 'address' })|raw}}
+			{{widget('profile', 'top-section_profile--phone', { 'profileType' : 'phone' })|raw}}
+		</div>
+	</div>
+</div>
+
+<header class="bk-header">
+    <div class="wrapper">
+    	<div class="header-content">
+			{{widget('companyname', 'companyname', {"business": "profile"})|raw}}
+	        {{widget('extendednavigation', 'navigationheader', {"align":"right"})|raw}}
+	    </div>
+    </div>
+</header>
