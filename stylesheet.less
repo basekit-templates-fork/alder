@@ -138,6 +138,9 @@ body.edit .widget.navigation, body.edit .widget.extendednavigation {
     @media @tablet {
         display: block;
     }
+    @media @mobile {
+        padding: 12px 0;
+    }
 }
 
 
@@ -149,21 +152,31 @@ body.edit .widget.navigation, body.edit .widget.extendednavigation {
     .border-radiuses(5px, 0, 0, 5px);
 
     @media @mobile {
-        padding: 10px 0 7px;
+        .border-radius(0);
     }
 }
-.top-section-content {
+
+// Top Section List
+.top-section-list {
     .flex-space-between;
+
+    padding: 0;
+    list-style: none;
 
     @media @mobile {
         display: block;
     }
 }
 
+// Hide first list item at mobile
+.top-section-item:first-child {
+    @media @mobile {
+        display: none;
+    }
+}
+
 
 // Top Section: Profile Widgets
-// ----------------------------
-
 .widget.profile {
     span, a, p {
         color: lighten(@color-swatch4, 25%)!important;
