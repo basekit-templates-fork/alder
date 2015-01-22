@@ -4,11 +4,7 @@
 			<li class="top-section-item">
 				<div id="page-zones__template-widgets__profile-top-section_profile--address" class="widget profile " data-widget-type="profile">
 				    <div class="bk-profile-address">
-				        <p class="address">123 Example Street</p>
-				        <p class="address1">Test Plaza</p>
-				        <p class="address2">Block Number One</p>
-				        <p class="country">United Kingdom</p>
-				        <p class="postal-code">BS1 2ND</p>
+				        <p>Unit R4, SouthGate Place, BA1 1AP Bath, Somerset</p>
 				    </div>
 				</div>
 			</li>
@@ -24,8 +20,48 @@
 <header class="bk-header">
     <div class="wrapper">
     	<div class="header-content">
-			{{widget('companyname', 'companyname', {"business": "profile"})|raw}}
-	        {{widget('extendednavigation', 'navigationheader', {"align":"right"})|raw}}
+			<div id="page-zones__template-widgets__companyname-companyname" class="widget companyname " data-widget-type="companyname">
+				<a href="/">The Cosy Club Bath</a>
+			</div>
+	        <div id="page-zones__template-widgets__extendednavigation-navigationheader" class="widget extendednavigation " data-widget-type="extendednavigation">
+			    <div class="extendednavigation js-extendednavigation">
+			        <ul class="align-right 5-items">
+			            <li id="menu-item_1" class="home selected">
+			                <a href="/"><span class="text">Home</span></a>
+			            </li>
+			            <li id="menu-item_2" class="page">
+			                <a href="/about"><span class="text">About</span></a>
+			            </li>
+			            <li id="menu-item_3" class="page">
+			                <a href="/contact"><span class="text">Photos</span></a>
+			            </li>
+			            <li id="menu-item_4" class="folder" aria-haspopup="true">
+			                <span class="text">Reviews</span>
+			                <ul class="3-items">
+			                    <li id="menu-item_5" class="page">
+			                        <a href="/portfolio/web">
+			                        <span class="text">Review 1</span>
+			                        </a>
+			                    </li>
+			                    <li id="menu-item_6" class="page">
+			                        <a href="/portfolio/print">
+			                        <span class="text">Review 2</span>
+			                        </a>
+			                    </li>
+			                    <li id="menu-item_7" class="page">
+			                        <a href="/portfolio/canvas">
+			                        <span class="text">Review 3</span>
+			                        </a>
+			                    </li>
+			                </ul>
+			            </li>
+			            <li id="menu-item_8" class="page">
+			                <a href="/gallery"><span class="text">Contact</span></a>
+			            </li>
+			        </ul>
+			        <a href="#" class="pull js-pull"></a>
+			    </div>
+			</div>
 	    </div>
     </div>
 </header>

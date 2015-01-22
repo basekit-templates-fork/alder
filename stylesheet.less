@@ -85,7 +85,7 @@ body {
 
 .canvas {
     background-color: @color-swatch1;
-    max-width: 1300px;
+    max-width: 1100px;
     width: 90%;
     margin: 40px auto;
     padding: 0px;
@@ -94,7 +94,7 @@ body {
 }
 
 .main {
-    padding: 2em 0;
+    padding: 50px 0;
 }
 
 body.edit .widget.navigation, body.edit .widget.extendednavigation {
@@ -299,7 +299,7 @@ button.btn,
         bottom: 0;
         z-index: 9999;
         width: 100%;
-        background-color: hsla(hue(@color-swatch4), saturation(@color-swatch4), lightness(darken(@color-swatch4,20%)), 0.6);
+        background-color: hsla(hue(@color-swatch4), saturation(@color-swatch4), lightness(darken(@color-swatch4,20%)), 0.7);
         button {
             margin: 0;
             @media @mobile {
@@ -316,21 +316,20 @@ button.btn,
         padding: 20px 0;
     }
     // Typography
+    h2 {
+        margin-bottom: 6px;
+    }
     h2, h3 {
         padding: 0;
-        max-width: 80%;
+        max-width: 70%;
     }
 }
 
 // Feature Button
 .feature-btn {
     position: absolute;
-    top: 35px;
+    top: 32%;
     right: 5%;
-
-    @media @tablet {
-        top: 30px;
-    }
     @media @mobile {
         position: relative;
         top: inherit;

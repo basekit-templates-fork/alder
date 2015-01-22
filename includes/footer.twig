@@ -1,8 +1,17 @@
 <footer class="bk-footer">
     <div class="wrapper">
     	<div class="footer-content">
-			{{widget('profile', 'footer_profile--copyright', { 'profileType':'copyright', 'copyright':'profile'})|raw}}
-        	{{widget('profile', 'footer_profile--socialicons', { 'profileType' : 'socialicons' })|raw}}
+			<div id="page-zones__template-widgets__profile-footer_profile--copyright" class="widget profile " data-widget-type="profile">
+				<span class="bk-profile-copyright">© Copyright The Cosy Club Bath. All Rights Reserved.</span>
+			</div>
+			<div id="page-zones__template-widgets__profile-footer_profile--socialicons" class="widget profile " data-widget-type="profile">
+			    <div class="bk-profile-socialicons">
+			        <!-- Facebook -->
+			        <span class="bk-socialicons-facebook">
+			       		<a href="facebook.com" target="_blank">Facebook</a>
+			        </span>
+			    </div>
+			</div>
 	    </div>
     </div>
 </footer>

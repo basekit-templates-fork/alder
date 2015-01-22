@@ -14,7 +14,7 @@
         "Swatch 1": {
             "color1":"#ffffff",
             "color2":"#2c323b",
-            "color3":"#6ea0ed",
+            "color3":"#ED7C6E",
             "color4":"#546373",
             "color5":"#828792",
             "color6":"#9B9B9B",
@@ -122,9 +122,9 @@
         },
         "font8": {
             "font-family": "\"Roboto\", Geneva, \"Lucida Console\", sans-serif",
-            "font-size": "26px",
+            "font-size": "22px",
             "font-weight": "300",
-            "line-height": "36px",
+            "line-height": "30px",
             "color": "@color-swatch1",
             "letter-spacing": "inherit"
         },
@@ -132,7 +132,7 @@
             "font-family": "\"Helvetica\", Arial, sans-serif",
             "font-size": "16px",
             "font-weight": "300",
-            "line-height": "34px",
+            "line-height": "24px",
             "color": "@color-swatch3",
             "letter-spacing": "inherit"
         },
