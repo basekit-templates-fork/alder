@@ -8,7 +8,20 @@
     {% include "includes/header.twig" %}
 
     <!-- Feature -->
-    {{widget('feature', 'featurehome', {"header": "profile", "strapline":"profile", "buttonText":"Lorem Ipsum","defaultBgImg": asset('images/feature-bg.jpg'), 'positionTopPercentage': '0','showBtn': false})|raw}}
+    <div id="page-zones__template-widgets__feature-featurehome" class="widget feature " data-widget-type="feature">
+	    <div class="feature-bgimg" style="background-image: url('/index.php/template/alder/images/feature-bg.jpg'); background-position: center 0%">
+	        <div class="content">
+	            <div class="spare wrapper">
+	                <h2>
+	                    <span>Quirky, eccentric and playful the Cosy Club offers informal casual dining, drinking and lounging in a homely and family friendly environment.</span>
+	                </h2>
+	                <h3>
+	                    <span>Breakfast, Lunch, Dinner, Coffee and Drinks.</span>
+	                </h3>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 
     <div class="main wrapper clearfix">
         {{zone('main')|raw}}

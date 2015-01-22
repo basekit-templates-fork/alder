@@ -1,8 +1,22 @@
 <div class="top-section">
 	<div class="wrapper">
 		<ul class="top-section-list">
-			<li class="top-section-item">{{widget('profile', 'top-section_profile--address', { 'profileType' : 'address' })|raw}}</li>
-			<li class="top-section-item">{{widget('profile', 'top-section_profile--phone', { 'profileType' : 'phone' })|raw}}</li>
+			<li class="top-section-item">
+				<div id="page-zones__template-widgets__profile-top-section_profile--address" class="widget profile " data-widget-type="profile">
+				    <div class="bk-profile-address">
+				        <p class="address">123 Example Street</p>
+				        <p class="address1">Test Plaza</p>
+				        <p class="address2">Block Number One</p>
+				        <p class="country">United Kingdom</p>
+				        <p class="postal-code">BS1 2ND</p>
+				    </div>
+				</div>
+			</li>
+			<li class="top-section-item">
+				<div id="page-zones__template-widgets__profile-top-section_profile--phone" class="widget profile " data-widget-type="profile">
+				    <span class="bk-profile-phone">(020) 123 456 789 </span>
+				</div>
+			</li>
 		</ul>
 	</div>
 </div>
