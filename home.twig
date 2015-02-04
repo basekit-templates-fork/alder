@@ -8,62 +8,10 @@
     {% include "includes/header.twig" %}
 
     <!-- Feature -->
-    <div id="page-zones__template-widgets__feature-featurehome" class="widget feature " data-widget-type="feature">
-	    <div class="feature-bgimg" style="background-image: url('/index.php/template/alder/images/feature-bg.jpg'); background-position: center 50%">
-	        <div class="content">
-	            <div class="spare wrapper">
-	                <h2>
-	                    <span>Quirky, eccentric and playful the Cosy Club offers informal casual dining, drinking and lounging in a homely and family friendly environment.</span>
-	                </h2>
-	                <h3>
-	                    <span>Lounge, Coffee Shop &amp; Bar</span>
-	                </h3>
-	                <!-- <span class="feature-btn">
-						<button class="btn js-feature-btn  "><span class="btnText">See Menu</span></button>
-					</span> -->
-	            </div>
-	        </div>
-	    </div>
-	</div>
+    {{widget('feature', 'feature', {"header": "profile", "defaultBgImg": asset('images/feature-bg.jpg'), 'positionTopPercentage': '0','showBtn': false, "buttonText":"Lorem Ipsum"})|raw}}
 
     <div class="main wrapper clearfix">
-
-        {# {{zone('main')|raw}} #}
-
-        <div class="widget responsivecolumns columns-two-34-66">
-
-		    <section class="column columns-two-left">
-		    	{{widget('logo', 'logo', {"defaultlogo": asset('images/logo.jpg')})|raw}}
-
-		    	<h3 style="margin-top: 20px;">Opening Times</h3>
-				<p>Mon - Wed: 9:00 am - 11:00 pm</p>
-				<p>Thu - Sat:9:00 am - 12:30 am</p>
-				<p style="margin-bottom: 20px;">Sun: 9:00 am - 11:00 pm</p>
-
-				{{widget('map', 'map', {'height': '200', 'zoom': '15', 'address': 'Unit R4, SouthGate Place, BA1 1AP Bath, Somerset'})|raw}}
-
-		    </section>
-
-		    <section class="column columns-two-right">
-				<h3>Company Description</h3>
-				<p>Don't be fooled by Cosy Club Bath's bijou entrance (opposite the main entrance to Debenhams). Once inside climb the stairs (or use the lift) to access an absolutely stunning first floor trading area complete with a coliseum-esque balcony with terrace seating overlooking Southgate Place.</p>
-
-				<p>The open-plan first-floor space is split into separate bar &amp; dining areas &amp; has an overall capacity for 300 guests.</p>
-
-				<p>The bar area comprises of an art deco inspired snug &amp; a roomy bar area, which is dominated by an impressive Gin Palace inspired bar. The look is completed with leather club chairs, sink-into sofa's, art deco coffee tables, velvet pouffes, chandeliers, &amp; a pair of feature art deco uplighters (from the set of Jeeves &amp; Wooster).</p>
-
-				<p>The dining area has seating for up 110 guests internally &amp; 66 guests on the balcony. Internally there's an eclectic mix of reclaimed tables, old leather dining chairs, reclaimed railway waiting room benches, old lab stools, Victorian lampshades &amp; Eastern European factory lights. On the raised area, complete with a couple of feature antler chandeliers, the walls are adorned (literally covered) with old oil paintings &amp; prints. The simply stunning balcony is easily one of Bath's most impressive al fresco dining spots where you can people-watch to your hearts content.</p>
-
-				<h3 style="margin-top: 20px;">Cuisune</h3>
-				<p>Breakfast, British, Brunch, Burgers, Sandwiches, Tapas Bars, Vegan and Vegetarian</p>
-
-				<h3 style="margin-top: 20px;">Other Page Info</h3>
-				<p>Other page information would live here.</p>
-
-		    </section>
-
-		</div>
-
+		{{zone('main')|raw}}
     </div>
 
     <!-- Footer Include -->
