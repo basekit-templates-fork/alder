@@ -4,34 +4,18 @@
 
 <div class="canvas">
 
-<header class="bk-header">
-    <div class="wrapper clearfix">
-        <div class="companyheader clearfix">
-            {{widget('logo', 'logo', {"defaultlogo": asset('images/logo.svg')})|raw}}
-            {{widget('companyname', 'companyname', {"business": "profile"})|raw}}
-        </div>
-        {{widget('extendednavigation', 'navigationheader', {"align":"right"})|raw}}
+    <!-- Header Include -->
+    {% include "includes/header.twig" %}
+
+    <!-- Feature -->
+    {{widget('feature', 'featurehome', {"header": "profile", "strapline":"profile", "buttonText":"Lorem Ipsum","defaultBgImg": asset('images/feature-bg.jpg'), 'positionTopPercentage': '0','showBtn': false})|raw}}
+
+    <div class="main wrapper clearfix">
+        {{zone('main')|raw}}
     </div>
-</header>
 
-<section>
-	{{widget('feature', 'featurehome', {"header": "profile", "strapline":"profile", "buttonText":"Lorem Ipsum","defaultBgImg": asset('images/feature-bg.jpg'), 'positionTopPercentage': '0','showBtn': true})|raw}}
-</section>
-
-<div class="main wrapper clearfix">
-    {{zone('main')|raw}}
-</div>
-
-<footer class="wrapper bk-footer">
-    <div class="responsivecolumns columns-two-50-50">
-        <div class="column columns-two-left">
-           	{{widget('profile', 'footercolumn1profilecopyright', { 'profileType':'copyright', 'copyright':'profile'})|raw}}
-        </div>
-        <div class="column columns-two-right">
-            {{widget('profile', 'footercolumn2socialicons', { 'profileType' : 'socialicons' })|raw}}
-        </div>
-    </div>
-</footer>
+    <!-- Footer Include -->
+    {% include "includes/footer.twig" %}
 
 </div>
 

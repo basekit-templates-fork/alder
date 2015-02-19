@@ -4,37 +4,25 @@
 
 <div class="canvas">
 
-<header class="bk-header">
-    <div class="wrapper clearfix">
-        <div class="companyheader clearfix">
-            {{widget('logo', 'logo', {"defaultlogo": asset('images/logo.svg')})|raw}}
-            {{widget('companyname', 'companyname', {"business": "profile"})|raw}}
-        </div>
-        {{widget('extendednavigation', 'navigationheader', {"align":"right"})|raw}}
-    </div>
-</header>
+    <!-- Header Include -->
+    {% include "includes/header.twig" %}
 
-<div class="page-title">
-	<div class="wrapper">
-		<h4>{{ page.title }}</h4>
-	</div>
-</div>
-
-<div class="main wrapper clearfix">
-    {{zone('main')|raw}}
-</div>
-
-<footer class="wrapper bk-footer">
-    <div class="responsivecolumns columns-two-50-50">
-        <div class="column columns-two-left">
-           	{{widget('profile', 'footercolumn1profilecopyright', { 'profileType':'copyright', 'copyright':'profile'})|raw}}
-        </div>
-        <div class="column columns-two-right">
-            {{widget('profile', 'footercolumn2socialicons', { 'profileType' : 'socialicons' })|raw}}
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="wrapper">
+            <h4>{{ page.title }}</h4>
         </div>
     </div>
-</footer>
+
+    <!-- Main Zone -->
+    <div class="main wrapper clearfix">
+        {{zone('main')|raw}}
+    </div>
+
+    <!-- Footer Include -->
+    {% include "includes/footer.twig" %}
 
 </div>
 
 {% endblock %}
+
