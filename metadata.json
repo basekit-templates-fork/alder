@@ -122,9 +122,9 @@
         },
         "font8": {
             "font-family": "\"Roboto\", Geneva, \"Lucida Console\", sans-serif",
-            "font-size": "32px",
+            "font-size": "22px",
             "font-weight": "300",
-            "line-height": "40px",
+            "line-height": "32px",
             "color": "@color-swatch1",
             "letter-spacing": "inherit"
         },
@@ -132,7 +132,7 @@
             "font-family": "\"Helvetica\", Arial, sans-serif",
             "font-size": "16px",
             "font-weight": "300",
-            "line-height": "34px",
+            "line-height": "28px",
             "color": "@color-swatch1",
             "letter-spacing": "inherit"
         },
